@@ -1,5 +1,5 @@
 number:+91 9876543210
-pass:
+pass:password123
 
 # RuralCare Pro — Integrated Rural Healthcare Platform
 
