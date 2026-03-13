@@ -61,12 +61,13 @@ app.use((err, req, res, next) => {
 });
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gramhealth')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:5000/gramhealth')
   .then(() => {
     console.log('✅ MongoDB connected');
     app.listen(PORT, () => {
       console.log(`🚀 GramHealth AI Backend running on port ${PORT}`);
     });
+    
   })
   .catch(err => {
     console.error('❌ MongoDB connection failed:', err.message);
@@ -74,3 +75,5 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/gramhealt
   });
 
 module.exports = app;
+
+
