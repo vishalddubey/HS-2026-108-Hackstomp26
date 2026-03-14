@@ -46,7 +46,5 @@ The platform follows a **Client-Server Architecture**:
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/vishalddubey
-HS-2026-108-Hackstomp26.git](https://github.com/vishalddubey
-HS-2026-108-Hackstomp26.git)
-   cd ruralcare-ai
+   git clone [https://github.com/vishalddubey/HS-2026-108-Hackstomp26.git](https://github.com/vishalddubey/HS-2026-108-Hackstomp26.git)
+   cd HS-2026-108-Hackstomp26
