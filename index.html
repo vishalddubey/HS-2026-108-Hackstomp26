@@ -1185,6 +1185,26 @@ function sendSMSNow(){
   renderAppointments();showToast('SMS sent!','success');
 }
 
+function initMap(){
+  const el=document.getElementById('clinicMap');
+  if(!el)return;
+  if(mapInst){mapInst.remove();mapInst=null;}
+  mapInst=L.map('clinicMap').setView([userLat,userLng],14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© <a href="https://openstreetmap.org">OpenStreetMap</a> · <a href="https://www.openstreetmap.org/copyright">Contributors</a>',maxZoom:19}).addTo(mapInst);
+
+  // User marker
+  const youIcon=L.divIcon({html:'<div style="width:18px;height:18px;background:#0984e3;border:3px solid white;border-radius:50%;box-shadow:0 0 0 6px rgba(9,132,227,.25);"></div>',className:'',iconAnchor:[9,9]});
+  L.marker([userLat,userLng],{icon:youIcon}).addTo(mapInst).bindPopup('<b>📍 You are here</b>').openPopup();
+
+  // Clinic markers
+  CLINICS.forEach(c=>{
+    if(!c.lat||!c.lng)return;
+    const ico=L.divIcon({html:`<div style="background:white;border:2px solid ${c.type==='govt'?'#0f7b59':'#0984e3'};border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.2);">${c.emoji}</div>`,className:'',iconAnchor:[16,16]});
+    L.marker([c.lat,c.lng],{icon:ico}).addTo(mapInst)
+      .bindPopup(`<b>${c.name}</b><br>${c.address}<br><small>${c.dist?c.dist.toFixed(1)+' km away':''}</small><br><a href="https://www.openstreetmap.org/?mlat=${c.lat}&mlon=${c.lng}" target="_blank" style="color:#0f7b59;">Open in Maps ↗</a><br><a href="https://www.openstreetmap.org/directions?from=${userLat},${userLng}&to=${c.lat},${c.lng}&engine=graphhopper_car" target="_blank" style="color:#0984e3;font-size:11px;">🚗 Get Directions ↗</a>`);
+  });
+}
+  
 // ════════════════════════════════════════════════
 // CLINICS & LOCATION
 // ════════════════════════════════════════════════
