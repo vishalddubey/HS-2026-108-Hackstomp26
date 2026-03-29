@@ -36,7 +36,7 @@ RuralCare AI is a comprehensive healthcare ecosystem designed specifically for t
 ### Installation
 1. **Clone the repository:**
    ```bash
-<<<<<<< HEAD
+ HEAD
    git clone [https://github.com/username/ruralcare-ai.git](https://github.com/username/ruralcare-ai.git)
 =======
    git clone [https://github.com/vishalddubey/ruralcare-ai.git](https://github.com/vishalddubey/ruralcare-ai.git)
